@@ -1,0 +1,301 @@
+/* puppy-detail */
+
+@keyframes tp-stamp-thump {
+  0% {
+    opacity: 0;
+    transform: scale(1.25) rotate(-22deg);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(0.94) rotate(-8deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(-10deg);
+  }
+}
+.tp-entry {
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+}
+.tp-stamp {
+  aspect-ratio: 1;
+  width: clamp(8.5rem, 12vw, 10.5rem);
+  color: var(--ink-stamp);
+  rotate: var(--tilt);
+  opacity: 0.9;
+  mix-blend-mode: multiply;
+  border: 3px solid;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.8rem;
+  display: flex;
+  position: relative;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -2.4 2.15'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")
+    0 0/160px 160px;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -2.4 2.15'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")
+    0 0/160px 160px;
+}
+.tp-stamp:after {
+  content: "";
+  border-radius: inherit;
+  border: 1.5px dashed;
+  position: absolute;
+  inset: 5px;
+}
+.tp-stamp--round,
+.tp-stamp--scallop {
+  border-radius: 50%;
+}
+.tp-stamp--ticket {
+  aspect-ratio: 1.3;
+  border-radius: 0.7rem;
+}
+.tp-stamp--oval {
+  aspect-ratio: 1.35;
+  border-radius: 50%;
+}
+.tp-stamp--scallop {
+  border-style: dotted;
+  border-width: 5px;
+}
+.tp-stamp__icon {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+.tp-stamp__title {
+  max-width: 10ch;
+  font-size: 1.08rem;
+  line-height: 1.05;
+}
+.tp-entry__text {
+  max-width: 26ch;
+  color: var(--color-cocoa-soft);
+  margin-top: 0.85rem;
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+@supports (animation-timeline: view()) {
+  .tp-stamp {
+    animation: linear both tp-stamp-in;
+    animation-timeline: view();
+    animation-range: entry calc(55% + var(--i) * 9%) cover
+      calc(42% + var(--i) * 6%);
+  }
+}
+@keyframes tp-stamp-in {
+  0% {
+    opacity: 0;
+    scale: 1.7;
+    rotate: calc(var(--tilt) - 16deg);
+  }
+  55% {
+    opacity: 0.95;
+    scale: 0.93;
+  }
+  75% {
+    scale: 1.03;
+  }
+  to {
+    opacity: 0.9;
+    scale: 1;
+    rotate: var(--tilt);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tp-stamp {
+    animation: none !important;
+  }
+}
+.tp-viewer__sharp {
+  opacity: 0;
+  transition: opacity 0.2s ease-out;
+}
+.tp-viewer__sharp[data-sharp] {
+  opacity: 1;
+}
+.tp-viewer__first--done {
+  visibility: hidden;
+  transition: visibility 0s 0.2s;
+}
+@keyframes tp-letter-fold {
+  55% {
+    opacity: 0.7;
+    transform: perspective(1100px) rotateX(62deg) scale(0.8);
+  }
+  to {
+    opacity: 0;
+    transform: perspective(1100px) rotateX(80deg) scale(0.35) translateY(30%);
+  }
+}
+@keyframes tp-env-in {
+  0% {
+    opacity: 0;
+    scale: 0.4;
+  }
+}
+@keyframes tp-env-post {
+  0% {
+    translate: -50%;
+    scale: 1;
+  }
+  35% {
+    translate: -50% -1.2rem;
+    scale: 0.92;
+  }
+  to {
+    translate: -50% 12.5rem;
+    scale: 0.55;
+  }
+}
+.tp-ribbon {
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  left: max(0.3rem, calc(var(--gutter) * 0.5 - 0.6rem));
+  pointer-events: none;
+  width: 1.2rem;
+  position: absolute;
+}
+.tp-ribbon__track {
+  top: calc(var(--header-h) + 1.4rem);
+  height: calc(100vh - var(--header-h) - 4.4rem);
+  position: sticky;
+}
+.tp-ribbon__track:before {
+  content: "";
+  background: linear-gradient(90deg, #8e3f15, #c2622b 45%, #a24a1a);
+  border-radius: 0.6rem 0.6rem 0 0;
+  height: 0.6rem;
+  position: absolute;
+  inset: -0.6rem 0 auto;
+}
+.tp-ribbon__band {
+  transform-origin: 50% 0;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% calc(100% - 0.75rem), 0 100%);
+  background: linear-gradient(90deg, #8e3f15, #c2622b 45%, #a24a1a);
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+@media (max-width: 1023px) {
+  .tp-ribbon {
+    display: none;
+  }
+}
+.tp-tag {
+  transform-origin: 2.6rem -0.6rem;
+}
+.tp-tag__ring {
+  z-index: 1;
+  aspect-ratio: 1;
+  border: 3.5px solid var(--color-cocoa);
+  background: radial-gradient(
+    circle,
+    transparent 0 0.55rem,
+    var(--color-honey) 0.6rem
+  );
+  border-radius: 50%;
+  width: 2.2rem;
+  position: absolute;
+  top: -1.2rem;
+  left: 1.5rem;
+  box-shadow: inset 0 0 0 2px #ffffff80;
+}
+.tp-tag[data-armed]:not([data-revealed]) {
+  opacity: 0;
+  rotate: calc(-8deg * var(--swing, 1));
+}
+@media (max-width: 1023px) {
+  .tp-tag {
+    --swing: 0.25;
+  }
+}
+.tp-tag[data-revealed] {
+  animation: tp-tag-swing 1.7s var(--ease-silk) both;
+}
+@media (hover: hover) {
+  .tp-tag[data-revealed]:hover {
+    animation: tp-tag-nudge 1.3s var(--ease-silk);
+  }
+}
+@keyframes tp-tag-swing {
+  0% {
+    rotate: calc(-7deg * var(--swing, 1));
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  30% {
+    rotate: calc(4deg * var(--swing, 1));
+  }
+  50% {
+    rotate: calc(-2.2deg * var(--swing, 1));
+  }
+  70% {
+    rotate: calc(1deg * var(--swing, 1));
+  }
+  86% {
+    rotate: calc(-0.4deg * var(--swing, 1));
+  }
+  to {
+    rotate: 0deg;
+  }
+}
+@keyframes tp-tag-nudge {
+  25% {
+    rotate: calc(1.6deg * var(--swing, 1));
+  }
+  55% {
+    rotate: calc(-0.9deg * var(--swing, 1));
+  }
+  80% {
+    rotate: calc(0.3deg * var(--swing, 1));
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tp-tag,
+  .tp-tag[data-revealed],
+  .tp-tag[data-revealed]:hover {
+    opacity: 1;
+    animation: none;
+    rotate: 0deg;
+  }
+}
+
+/* Page-turn when flipping through a puppy's photos (my addition). */
+@media (prefers-reduced-motion: no-preference) {
+  .tp-storypage__leaf[data-turn="next"] {
+    transform-origin: 0% 50%;
+    animation: tp-leaf-next 0.55s var(--ease-silk) both;
+  }
+  .tp-storypage__leaf[data-turn="prev"] {
+    transform-origin: 100% 50%;
+    animation: tp-leaf-prev 0.55s var(--ease-silk) both;
+  }
+}
+@keyframes tp-leaf-next {
+  from {
+    clip-path: inset(0 0 0 100%);
+    transform: perspective(1200px) rotateY(-14deg);
+  }
+  to {
+    clip-path: inset(0);
+    transform: none;
+  }
+}
+@keyframes tp-leaf-prev {
+  from {
+    clip-path: inset(0 100% 0 0);
+    transform: perspective(1200px) rotateY(14deg);
+  }
+  to {
+    clip-path: inset(0);
+    transform: none;
+  }
+}

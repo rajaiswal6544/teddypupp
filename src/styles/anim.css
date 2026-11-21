@@ -1,0 +1,202 @@
+/* anim */
+
+@keyframes tp-print-step {
+  0% {
+    opacity: 0;
+    scale: 0.4;
+  }
+  14% {
+    opacity: 0.7;
+    scale: 1.08;
+  }
+  26% {
+    scale: 1;
+  }
+  70% {
+    opacity: 0.7;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes tp-hold-still {
+  0%,
+  to {
+    overflow-y: hidden;
+  }
+}
+@keyframes tp-float {
+  0%,
+  to {
+    transform: translateY(0) rotate(0);
+  }
+  50% {
+    transform: translateY(-8px) rotate(8deg);
+  }
+}
+@keyframes tp-sun-set {
+  0% {
+    translate: 0 -60%;
+  }
+  to {
+    translate: 0 40%;
+  }
+}
+@keyframes tp-sunrise {
+  0% {
+    opacity: 0;
+    translate: -50% 16%;
+  }
+}
+@keyframes tp-peek {
+  0% {
+    translate: 0 100%;
+  }
+}
+@keyframes tp-pop-up {
+  0% {
+    opacity: 0.6;
+    translate: 0 108%;
+    scale: 0.92;
+  }
+  65% {
+    opacity: 1;
+    scale: 1.04;
+  }
+  to {
+    opacity: 1;
+    translate: 0;
+    scale: 1;
+  }
+}
+@keyframes tp-dot {
+  0%,
+  60%,
+  to {
+    translate: 0;
+  }
+  30% {
+    translate: 0 -0.35rem;
+  }
+}
+@keyframes tp-breathe {
+  50% {
+    scale: 1 1.014;
+  }
+}
+@keyframes tp-blink-open {
+  0%,
+  92%,
+  97%,
+  to {
+    opacity: 1;
+  }
+  94.5% {
+    opacity: 0;
+  }
+}
+@keyframes tp-blink-shut {
+  0%,
+  92%,
+  97%,
+  to {
+    opacity: 0;
+  }
+  94.5% {
+    opacity: 1;
+  }
+}
+@keyframes tp-ear-twitch {
+  0%,
+  84%,
+  to {
+    rotate: 0deg;
+  }
+  87% {
+    rotate: -11deg;
+  }
+  90% {
+    rotate: 5deg;
+  }
+  93% {
+    rotate: -2deg;
+  }
+}
+@keyframes tp-doodle-hop {
+  40% {
+    rotate: 12deg;
+    scale: 1.35;
+  }
+}
+@keyframes tp-print-bound {
+  0% {
+    opacity: 0;
+    animation-timing-function: cubic-bezier(0.2, 0.7, 0.3, 1);
+    translate: 0 1.6rem;
+    scale: 0.9;
+  }
+  42% {
+    opacity: 1;
+    animation-timing-function: cubic-bezier(0.5, 0, 0.7, 0.4);
+    translate: 0 -0.4rem;
+    scale: 0.98 1.03;
+  }
+  68% {
+    animation-timing-function: cubic-bezier(0.3, 0, 0.3, 1);
+    translate: 0;
+    scale: 1.03 0.97;
+  }
+  to {
+    opacity: 1;
+    translate: 0;
+    scale: 1;
+  }
+}
+@keyframes tp-paw-pat {
+  0% {
+    opacity: 0;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.7, 0.6);
+    transform: translateY(-1.2rem) rotate(-16deg) scale(1.15);
+  }
+  32% {
+    opacity: 0.92;
+    animation-timing-function: cubic-bezier(0.3, 0, 0.3, 1);
+    transform: translateY(0.12rem) rotate(-6deg) scale(1.06, 0.88);
+  }
+  52% {
+    opacity: 0.92;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.8, 0.6);
+    transform: translateY(0) rotate(-6deg) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-1rem) rotate(6deg) scale(1.04);
+  }
+}
+@keyframes tp-flap {
+  0% {
+    transform: scaleY(-1);
+  }
+}
+@keyframes tp-box-up {
+  to {
+    translate: -50%;
+  }
+}
+@keyframes tp-flag {
+  to {
+    rotate: 0deg;
+  }
+}
+@keyframes tp-sent-in {
+  0% {
+    opacity: 0;
+    transform: translateY(1rem) scale(0.96);
+  }
+}
+@keyframes tp-plane-bob {
+  50% {
+    translate: 0 -6px;
+    rotate: -3deg;
+  }
+}

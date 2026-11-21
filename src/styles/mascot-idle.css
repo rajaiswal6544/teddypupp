@@ -1,0 +1,80 @@
+/*
+ * Idle life for the static Teddy poses (my addition: the reference animates a
+ * single roaming "actor"; here every placed pose breathes, wags and blinks).
+ * Uses individual transform properties so they compose with the SVG
+ * transform attributes that define each pose.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  .pup-buddy > svg [data-p="tail"] {
+    transform-box: view-box;
+    transform-origin: 84px 150px;
+    animation: pup-idle-wag 0.9s ease-in-out infinite alternate;
+  }
+  .pup-buddy > svg [data-p="earL"],
+  .pup-buddy > svg [data-p="earR"] {
+    transform-box: view-box;
+    animation: pup-idle-ear 5.5s ease-in-out infinite;
+  }
+  .pup-buddy > svg [data-p="earL"] {
+    transform-origin: 174px 82px;
+  }
+  .pup-buddy > svg [data-p="earR"] {
+    transform-origin: 250px 82px;
+    animation-delay: 0.15s;
+  }
+  .pup-buddy > svg [data-p="head"] {
+    transform-box: view-box;
+    transform-origin: 212px 140px;
+    animation: pup-idle-head 7s ease-in-out infinite;
+  }
+  .pup-buddy > svg [data-p="eyes"] {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: pup-idle-blink 4.8s infinite;
+  }
+  .pup-stop:nth-of-type(2n) .pup-buddy > svg [data-p="eyes"] {
+    animation-delay: 1.7s;
+  }
+}
+@keyframes pup-idle-wag {
+  from {
+    rotate: -6deg;
+  }
+  to {
+    rotate: 8deg;
+  }
+}
+@keyframes pup-idle-ear {
+  0%,
+  88%,
+  100% {
+    rotate: 0deg;
+  }
+  92% {
+    rotate: -7deg;
+  }
+  96% {
+    rotate: 3deg;
+  }
+}
+@keyframes pup-idle-head {
+  0%,
+  40%,
+  100% {
+    rotate: 0deg;
+  }
+  50%,
+  70% {
+    rotate: -5deg;
+  }
+}
+@keyframes pup-idle-blink {
+  0%,
+  94%,
+  100% {
+    scale: 1 1;
+  }
+  97% {
+    scale: 1 0.1;
+  }
+}
